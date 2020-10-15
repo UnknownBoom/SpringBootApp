@@ -8,4 +8,6 @@ import java.util.List;
 public interface MaterialRepo extends JpaRepository<Material,String> {
 
     List<Material> findByArticleContaining(String article);
+
+    Material findMaterialByArticle(String article);
 }

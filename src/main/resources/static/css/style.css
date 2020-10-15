@@ -1,0 +1,26 @@
+.bg-body{
+    background-image: url("/image/bg-01.jpg");
+    background-size:cover;
+}
+
+nav{
+    opacity: .9;
+    z-index: 1;
+}
+.custom-layout{
+    min-height: 100vh;
+    width: 97vw;
+    height:auto;
+    opacity: .9;
+}
+.custom-font{
+    color: #d1ecf1;
+    text-align: center;
+}
+
+.custom-down{
+    max-width: 90%;
+}
+.hidden-el{
+    display: none;
+}

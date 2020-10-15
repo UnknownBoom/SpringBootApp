@@ -1,4 +1,4 @@
 package com.KpApp.SpringBootApp.controller;
 
-public class Specification_UnitController {
+public class Specification_unitController {
 }

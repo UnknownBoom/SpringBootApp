@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface FurnitureRepo extends JpaRepository<Furniture, String> {
     Iterable<Furniture> findAllByArticleLike(String article);
     Iterable<Furniture> findByArticleContaining(String article);
+
+    Furniture findFurnitureByArticle(String article);
 }

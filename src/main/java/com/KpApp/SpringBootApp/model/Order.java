@@ -2,6 +2,7 @@ package com.KpApp.SpringBootApp.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,8 +17,9 @@ public class Order {
     @SequenceGenerator(name = "order_generator",sequenceName = "Orders_sequence" ,allocationSize = 25,initialValue = 25)
     private Long id;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private java.util.Date order_date;
 
     @Column(nullable = false,unique = true)

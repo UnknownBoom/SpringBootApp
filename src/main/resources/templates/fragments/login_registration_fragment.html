@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf- extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="login_reg_head (Title)">
+    <title th:text="${Title}"></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png"  th:href="@{/registration_login/images/icons/favicon.ico}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/vendor/animsition/css/animsition.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/vendor/daterangepicker/daterangepicker.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/registration_login/css/main.css}">
+    <!--===============================================================================================-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+<!--<div class="container-login100"th:fragment="form (islogin)">-->
+<!--    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">-->
+<!--        <form class="login100-form validate-form"  th:action="${islogin} == true?'/login':'/registration'" method="post">-->
+
+<!--                <span class="login100-form-title p-b-37" th:text="${islogin} ==true?'Sign In' : 'Sign Up'">-->
+<!--                </span>-->
+<!--            <div th:if="${param.error}">-->
+<!--                <div class="alert alert-danger" th:text="${islogin} ==true?'Invalid username or password' : ${error}">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">-->
+<!--                <input class="input100" type="text" name="username" placeholder="username or email">-->
+<!--                <span class="focus-input100"></span>-->
+<!--            </div>-->
+
+<!--            <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">-->
+<!--                <input class="input100" type="password" name="password" placeholder="password">-->
+<!--                <span class="focus-input100"></span>-->
+<!--            </div>-->
+
+<!--            <div class="container-login100-form-btn">-->
+<!--                <button  type="submit" class="login100-form-btn" th:text="${islogin} ==true?'Sign In' : 'Sign Up'">-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="text-center mt-3">-->
+<!--                <a th:href="${islogin} ==true?'/registration' : '/login'" class="txt2 hov1 m-5" th:text="${islogin} ==true?'Sign Up' : 'Sign In'" >-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div th:fragment="login_reg_script">
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <!--    <script src="vendor/jquery/jquery-3.2.1.min.js" th:src></script>-->
+    <script th:src="@{/registration_login/vendor/jquery/jquery-3.2.1.min.js}"></script>
+    <!--===============================================================================================-->
+    <script  th:src="@{/registration_login/vendor/animsition/js/animsition.min.js}"></script>
+    <!--===============================================================================================-->
+    <script th:src="@{/bootstrap/js/popper.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <!--===============================================================================================-->
+    <script th:src="@{/registration_login/vendor/select2/select2.min.js}"></script>
+    <!--===============================================================================================-->
+    <script th:src="@{/registration_login/vendor/daterangepicker/moment.min.js}"></script>
+    <script th:src="@{/registration_login/vendor/daterangepicker/daterangepicker.js}"></script>
+    <!--===============================================================================================-->
+    <script th:src="@{/registration_login/vendor/countdowntime/countdowntime.js}"></script>
+    <!--===============================================================================================-->
+    <script th:src="@{/registration_login/js/main.js}"></script>
+    <script>
+        function show_hide_password(target){
+            var input = document.getElementById('password-input');
+            if (input.getAttribute('type') == 'password') {
+                target.classList.add('view');
+                input.setAttribute('type', 'text');
+            } else {
+                target.classList.remove('view');
+                input.setAttribute('type', 'password');
+            }
+            return false;
+        }
+    </script>
+
+</div>
+</body>
+</html>
