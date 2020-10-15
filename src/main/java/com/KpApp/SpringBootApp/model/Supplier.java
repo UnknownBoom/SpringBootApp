@@ -8,7 +8,7 @@ import org.hibernate.annotations.NaturalId;
 import javax.persistence.*;
 
 @Entity
-@Table("suppliers")
+@Table(name = "suppliers")
 @Data
 @NoArgsConstructor
 public class Supplier {
@@ -16,10 +16,10 @@ public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "suppliers_generator")
     @SequenceGenerator(name = "suppliers_generator",sequenceName = "suppliers_sequence" ,allocationSize = 25,initialValue = 25)
-    private Long supplier_id;
+    private Long id;
 
     @NaturalId(mutable = true)
-    @Column(name = "supplier_name")
+    @Column(nullable = false)
     private String supplier_name;
 
     @Column(nullable = true)
