@@ -14,7 +14,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "order_generator")
     @SequenceGenerator(name = "order_generator",sequenceName = "Orders_sequence" ,allocationSize = 25,initialValue = 25)
-    private Long order_id;
+    private Long id;
 
     @Column(nullable = false,unique = true)
     @Temporal(TemporalType.DATE)
