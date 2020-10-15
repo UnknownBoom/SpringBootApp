@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class Order {
 
     @Column(nullable = false,unique = true)
     @Temporal(TemporalType.DATE)
-    private Date order_date;
+    private java.util.Date order_date;
 
     @Column(nullable = false,unique = true)
     private String order_name;

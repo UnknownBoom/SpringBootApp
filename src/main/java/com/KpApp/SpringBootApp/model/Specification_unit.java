@@ -1,9 +1,14 @@
 package com.KpApp.SpringBootApp.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-
+@Data
+@NoArgsConstructor
+@Entity
+@Table(name="specification_unit")
 public class Specification_unit {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "specification_unit_generator")
@@ -11,13 +16,11 @@ public class Specification_unit {
     private Long id;
 
     @NaturalId
-    @ManyToOne
-    @JoinColumn
+    @Enumerated(EnumType.STRING)
     private Product_type product_type_id;
 
     @NaturalId
-    @ManyToOne
-    @JoinColumn
+    @Enumerated(EnumType.STRING)
     private Product_type product_unit_id;
 
     @Column(nullable = false)
