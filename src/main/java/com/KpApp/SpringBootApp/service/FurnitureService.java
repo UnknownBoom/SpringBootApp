@@ -111,6 +111,8 @@ public class FurnitureService {
                 }else{
                     return false;
                 }
+            }else{
+                furniture.setImage_name(furnitureRepo.findFurnitureByArticle(furniture.getArticle()).getArticle());
             }
             furnitureRepo.save(furniture);
             return true;

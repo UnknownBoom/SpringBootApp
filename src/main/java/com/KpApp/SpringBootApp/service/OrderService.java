@@ -134,6 +134,8 @@ public class OrderService {
                 }else{
                     return false;
                 }
+            }else{
+                order.setOrder_scheme_name(orderRepo.findById(order.getId()).get().getOrder_scheme_name());
             }
             orderRepo.save(order);
             return true;

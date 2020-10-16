@@ -117,6 +117,8 @@ public class UserService implements UserDetailsService {
                 }else{
                     return false;
                 }
+            }else{
+                user.setPhoto_name(userRepo.findUsersById(user.getId()).getPhoto_name());
             }
             userRepo.save(user);
             return true;

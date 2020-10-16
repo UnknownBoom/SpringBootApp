@@ -70,6 +70,7 @@ public class MaterialService {
                     }
                 }
             }
+
             materialRepo.save(material);
             return true;
         }catch (Exception e){
@@ -111,6 +112,8 @@ public class MaterialService {
                 }else{
                     return false;
                 }
+            }else{
+                material.setImage_name(materialRepo.findMaterialByArticle(material.getArticle()).getImage_name());
             }
             materialRepo.save(material);
             return true;
