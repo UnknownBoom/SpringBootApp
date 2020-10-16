@@ -1,3 +1,4 @@
+create table equipment_accounting (mark varchar(255) not null, begin_date date, deterioration integer, end_date date, equipment_type varchar(255), primary key (mark)) engine=InnoDB;
 create table equipments (mark varchar(255) not null, description varchar(255), equipment_type varchar(255), primary key (mark)) engine=InnoDB;
 create table furnitures (article varchar(255) not null, amount integer not null, furniture_type varchar(255), image_name varchar(255), purchase_price decimal(19,2) not null, unit varchar(255) not null, weight integer not null, main_supplier_id bigint, primary key (article)) engine=InnoDB;
 create table materials (article varchar(255) not null, amount integer not null, description varchar(255), gost varchar(255), image_name varchar(255), length integer, material_type varchar(255), purchase_price decimal(19,2) not null, unit varchar(255) not null, main_supplier_id bigint, primary key (article)) engine=InnoDB;
