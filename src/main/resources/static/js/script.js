@@ -5,6 +5,11 @@ let inputs = document.querySelectorAll('#placeElem1 .tinput')
 console.log(edit_buttons);
 
 let ed_event_listener = function(e){
+    let tr = e.target.parentElement.parentElement.parentElement;
+    console.log(tr, arguments);
+    console.log(tr.querySelectorAll('td')[0].innerText);
+    let tr_id = tr.querySelectorAll('td')[0].innerText;
+    inputs[0].value = tr_id;
     let theads = document.querySelectorAll('.tmark');
     let tr = e.target.parentElement.parentElement.parentElement;
     let tds = [];
