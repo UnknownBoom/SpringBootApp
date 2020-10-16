@@ -43,7 +43,7 @@ let del_event_listener = function(e){
     let place = document.getElementById('placeElem2');
     let input = document.createElement('input');
     let next_sibling = document.getElementById("placeBefore");
-    input.name = "user_id";
+    input.name = "id";
     input.value = tr.id;
     input.className = 'hidden-el';
     console.log(input.value);
