@@ -99,11 +99,15 @@ public class FurnitureService {
         }
         try {
             furniture.setFurniture_type(Furniture_type.valueOf(furniture_type_enum));
-            if(supplier_name==null || supplier_name.isEmpty()){
+            if(supplier_name!=null && !supplier_name.isEmpty()){
                 Supplier supplier = supplierService.findSupplierByName(supplier_name);
                 if(supplier!=null){
                     furniture.setMain_supplier(supplier);
+                }else{
+                    return false;
                 }
+            }else{
+                furniture.setMain_supplier(furnitureRepo.findFurnitureByArticle(furniture.getArticle()).getMain_supplier());
             }
             if(file !=null && !file.isEmpty()){
                 if(ImageValidator.validate(file,null)){

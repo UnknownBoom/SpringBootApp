@@ -14,26 +14,25 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="placeElem1" method="post" th:action="@{/table/furniture/edit}"  enctype="multipart/form-data">
+                <form id="edit_form" method="post" th:action="@{/table/furniture/edit}"  enctype="multipart/form-data">
+
+                        <input id="edit_article" type="hidden" class="form-control tinput" name="article">
 
                     <div class="form-group">
-                        <label for="article1" class="col-form-label">article</label>
-                        <input id="article1" type="text" class="form-control tinput" name="article">
+                        <label for="edit_unit" class="col-form-label">unit</label>
+                        <input id="edit_unit" type="text" class="form-control tinput" name="unit">
                     </div>
                     <div class="form-group">
-                        <label for="unit1" class="col-form-label">unit</label>
-                        <input id="unit1" type="text" class="form-control tinput" name="unit">
+                        <label for="edit_amount" class="col-form-label">amount</label>
+                        <input id="edit_amount" type="text" class="form-control tinput" name="amount">
                     </div>
                     <div class="form-group">
-                        <label for="amount1" class="col-form-label">amount</label>
-                        <input id="amount1" type="text" class="form-control tinput" name="amount">
+                        <label for="edit_supplier_name" class="col-form-label">supplier_name</label>
+                        <input id="edit_supplier_name" type="text" class="form-control tinput" name="supplier_name">
                     </div>
                     <div class="form-group">
-                        <label for="supplier_name1" class="col-form-label">supplier_name</label>
-                        <input id="supplier_name1" type="text" class="form-control tinput" name="supplier_name">
-                    </div>
-                    <div class="form-group">
-                        <select name="furniture_type_enum">
+                        <label for="furniture_type_enum" class="col-form-label">Furniture Type</label>
+                        <select id="edit_furniture_type" name="furniture_type_enum">
                             <option>Tapping_screw</option>
                             <option>Dowel</option>
                             <option>Evrovint</option>
@@ -53,16 +52,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="purchase_price1" class="col-form-label">purchase_price</label>
-                        <input id="purchase_price1" type="text" class="form-control tinput" name="purchase_price">
+                        <label for="edit_purchase_price" class="col-form-label">purchase_price</label>
+                        <input id="edit_purchase_price" type="text" class="form-control tinput" name="purchase_price">
                     </div>
                     <div class="form-group">
-                        <label for="weight1" class="col-form-label">weight</label>
-                        <input id="weight1" type="text" class="form-control tinput" name="weight">
+                        <label for="edit_weight" class="col-form-label">weight</label>
+                        <input id="edit_weight" type="text" class="form-control tinput" name="weight">
                     </div>
                     <div class="form-group">
-                        <label for="photo1" class="col-form-label">photo</label>
-                        <input id="photo1" type="file" class="form-control" name="image_name_">
+                        <label for="photo" class="col-form-label">photo</label>
+                        <input id="photo" type="file" class="form-control" name="image_name_">
                     </div>
 
                     <div class="modal-footer">
@@ -87,15 +86,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="placeElem2" th:action="@{/table/furniture/delete}">
+                <form id="delete_form" method="post" th:action="@{/table/furniture/delete}">
                     <div class="modal-footer" id="placeBefore">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary">Delete</button>
-                        <input type="text" name="id" value="" class="hidden-el">
+                        <input type="hidden" name="article" id="delete_id">
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
@@ -109,13 +107,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="placeElem3" enctype="multipart/form-data"  method="post" th:action="@{/table/furniture/add}">
+                <form id="add_form" enctype="multipart/form-data"  method="post" th:action="@{/table/furniture/add}">
                     <div class="form-group">
                         <label for="article3" class="col-form-label">article</label>
                         <input id="article3" type="text" class="form-control tinput" name="article">
                     </div>
                     <div class="form-group">
-                        <select name="furniture_type_enum">
+                        <label for="furniture_type_enum" class="col-form-label">Furniture Type</label>
+                        <select id="furniture_type_enum" name="furniture_type_enum">
                             <option>Tapping_screw</option>
                             <option>Dowel</option>
                             <option>Evrovint</option>
@@ -175,7 +174,7 @@
     <div><h2 class="mx-auto custom-font">Furnitures</h2></div>
     <div>
         <div class="scroll-table" id="main-table">
-            <table class="table table-dark">
+            <table id="table" class="table table-dark">
                 <thead class="thead-dark">
                 <tr>
                     <div><th scope="col" class="tmark">Article</th></div>
@@ -194,17 +193,21 @@
                     <tbody>
                     <th:block th:each="furniture:${furnitures}">
                         <tr>
-                            <td th:text="${furniture.article}"></td>
-                            <td th:text="${furniture.furniture_type}"></td>
-                            <td th:text="${furniture.unit}"></td>
-                            <td th:text="${furniture.amount}"></td>
-                            <td th:text="${furniture.main_supplier.supplier_name}"></td>
+                            <td th:text="${furniture.article}?:''"></td>
+                            <td th:text="${furniture.furniture_type}?:''"></td>
+                            <td th:text="${furniture.unit}?:''"></td>
+                            <td th:text="${furniture.amount}?:''"></td>
+                            <td th:text="${furniture.main_supplier?.supplier_name}?:''"></td>
                             <td th:text="${furniture.purchase_price}"></td>
                             <td th:text="${furniture.weight}"></td>
                             <td><a target="_blank" th:href="@{|/table/furniture/${furniture.article}/${furniture.image_name}|}" th:if="${furniture.image_name}">Photo</a></td>
                             <td><div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo">Edit</button>
-                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo">Delete</button>
+                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo"
+                                        onclick="EditFurniture(this)"
+                                >Edit</button>
+                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo"
+                                        onclick="DeleteFurniture(this)"
+                                >Delete</button>
                             </div></td>
                         </tr>
                     </th:block>
@@ -216,7 +219,7 @@
         <button type="button" class="btn btn-secondary btn-add" data-toggle="modal" data-target="#modal_add" data-whatever="@mdo">Add new row</button>
     </div>
 </div>
-<footer th:replace="fragments/main_fragment::footer">
-</footer>
+<script type="text/javascript" th:src="@{/js/Furniture.js}"></script>
+
 </body>
 </html>
