@@ -8,6 +8,7 @@ import com.KpApp.SpringBootApp.repo.UserRepo;
 import com.KpApp.SpringBootApp.validator.ImageValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -99,7 +100,7 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public boolean editUser(User user,String user_role_enum,MultipartFile file){
+    public boolean editUser(User user, String user_role_enum, MultipartFile file){
         if(user==null) return false;
 
         if(!isExist(user)){
