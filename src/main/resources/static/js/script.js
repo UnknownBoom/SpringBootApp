@@ -11,7 +11,6 @@ let ed_event_listener = function(e){
     let tr_id = tr.querySelectorAll('td')[0].innerText;
     inputs[0].value = tr_id;
     let theads = document.querySelectorAll('.tmark');
-    let tr = e.target.parentElement.parentElement.parentElement;
     let tds = [];
     let values = [];
     for(let i = 1; i < theads.length; i++){
