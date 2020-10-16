@@ -121,7 +121,7 @@ public class MaterialService {
     }
 
 
-    public boolean efitMaterial(Material material){
+    public boolean editMaterial(Material material){
         if(material==null) return false;
 
         if(!isExist(material)){

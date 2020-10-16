@@ -13,7 +13,8 @@ public class EquipmentService {
 
     public boolean isExist(Equipment equipment){
         if(equipment==null) return false;
-        if(equipmentRepo.findEquipmentByMark(equipment.getMark())!=null){
+        Equipment byMark = equipmentRepo.findEquipmentByMark(equipment.getMark());
+        if(byMark!=null){
             return true;
         }
         return false;
@@ -32,7 +33,7 @@ public class EquipmentService {
     public boolean addEquipment(Equipment equipment, String equipment_type){
         if(equipment==null) return false;
 
-        if(!isExist(equipment)){
+        if(isExist(equipment)){
             System.out.println("Equipment AlREADY EXISTS");
             return false;
         }

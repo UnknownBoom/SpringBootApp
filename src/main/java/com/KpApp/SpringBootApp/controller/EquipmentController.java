@@ -28,19 +28,19 @@ public class EquipmentController {
     public String addEquipment(Equipment equipment,@RequestParam(name = "equipment_type_enum") String equipment_type_enum,
                                Model model){
         equipmentService.addEquipment(equipment,equipment_type_enum);
-        return "redirect:table/equipment";
+        return "redirect:/table/equipment";
     }
 
     @PostMapping("/edit")
     public String editEquipment(Equipment equipment,@RequestParam(name = "equipment_type_enum",required = false) String equipment_type_enum,
                                Model model){
         equipmentService.editEquipment(equipment,equipment_type_enum);
-        return "redirect:table/equipment";
+        return "redirect:/table/equipment";
     }
 
     @PostMapping("/delete")
     public String deleteEquipment(Equipment equipment,Model model){
         equipmentService.deleteEquipment(equipment);
-        return "redirect:table/equipment";
+        return "redirect:/table/equipment";
     }
 }
