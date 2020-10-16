@@ -179,7 +179,8 @@
                             <td th:text="${user.username}?:''"></td>
                             <td th:text="${user.password}?:''"></td>
                             <td th:text="${user.roles}?:''"></td>
-                            <td><a target="_blank" th:href ="@{|/table/user/${user.id}/${user.photo_name}|}"th:if="${user.photo_name}">Photo</a></td>
+                            <td><a target="_blank" th:href ="@{|/table/user/${user.id}/${user.photo_name}|}"th:if="${user.photo_name}" th:text="${user.photo_name}">Photo</a></td>
+                            <td></td>
 
                             <td><div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo">Edit</button>
