@@ -35,6 +35,7 @@ let ed_event_listener = function(e){
 }
 
 let del_event_listener = function(e){
+    let theads = document.querySelectorAll('.tmark');
     let tr = e.target.parentElement.parentElement.parentElement;
     console.log(tr, arguments);
     console.log(tr.querySelectorAll('td')[0].innerText);
@@ -43,7 +44,7 @@ let del_event_listener = function(e){
     let place = document.getElementById('placeElem2');
     let input = document.createElement('input');
     let next_sibling = document.getElementById("placeBefore");
-    input.name = "id";
+    input.name = theads[0].innerHTML;
     input.value = tr.id;
     input.className = 'hidden-el';
     console.log(input.value);
