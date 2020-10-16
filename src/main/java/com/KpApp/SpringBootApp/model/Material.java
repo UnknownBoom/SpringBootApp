@@ -16,9 +16,6 @@ public class Material {
     private String article;
 
     @Column(nullable = false)
-    private String product_name;
-
-    @Column(nullable = false)
     private String unit;
 
     @Column(nullable = false)
@@ -26,7 +23,7 @@ public class Material {
 
     @ManyToOne
     @JoinColumn
-    private Supplier main_supplier_id;
+    private Supplier main_supplier;
 
     @Column(nullable = true)
     private String image_name;

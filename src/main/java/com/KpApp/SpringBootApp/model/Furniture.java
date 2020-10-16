@@ -16,9 +16,6 @@ public class Furniture {
     private String article;
 
     @Column(nullable = false)
-    private String product_name;
-
-    @Column(nullable = false)
     private String unit;
 
     @Column(nullable = false)
@@ -26,7 +23,7 @@ public class Furniture {
 
     @JoinColumn(nullable = true)
     @ManyToOne
-    private Supplier main_supplier_id;
+    private Supplier main_supplier;
 
     @Enumerated(EnumType.STRING)
     private Furniture_type furniture_type;

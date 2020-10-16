@@ -33,6 +33,11 @@ public class SupplierService {
         }
         return Suppliers;
     }
+
+    public Supplier findSupplierByName(String name) {
+        Supplier supplier = supplierRepo.findBySupplier_name(name);
+        return supplier;
+    }
     
 
     public boolean addSupplier(Supplier Supplier){

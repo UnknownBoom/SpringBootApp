@@ -17,11 +17,11 @@ public class Specification_unit {
 
     @NaturalId
     @Enumerated(EnumType.STRING)
-    private Product_type product_type_id;
+    private Product_type product_type;
 
     @NaturalId
     @Enumerated(EnumType.STRING)
-    private Product_type product_unit_id;
+    private Product_type product_unit;
 
     @Column(nullable = false)
     private Integer amount;

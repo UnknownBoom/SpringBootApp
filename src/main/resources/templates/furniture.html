@@ -1,0 +1,224 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/main_fragment::header ('Furnitures')">
+</head>
+<body class="bg-body" >
+
+<div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel1">Edit row</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="placeElem1" method="post" th:action="@{/table/furniture/edit}"  enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label for="article1" class="col-form-label">article</label>
+                        <input id="article1" type="text" class="form-control tinput" name="article">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit1" class="col-form-label">unit</label>
+                        <input id="unit1" type="text" class="form-control tinput" name="unit">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount1" class="col-form-label">amount</label>
+                        <input id="amount1" type="text" class="form-control tinput" name="amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier_name1" class="col-form-label">supplier_name</label>
+                        <input id="supplier_name1" type="text" class="form-control tinput" name="supplier_name">
+                    </div>
+                    <div class="form-group">
+                        <select name="furniture_type_enum">
+                            <option>Tapping_screw</option>
+                            <option>Dowel</option>
+                            <option>Evrovint</option>
+                            <option>Screw</option>
+                            <option>Loops</option>
+                            <option>Nut</option>
+                            <option>Washer</option>
+                            <option>StudPlug
+                            <option>Kitchen</option>
+                            <option>corners_of_furniture</option>
+                            <option>dowels</option>
+                            <option>Fasteners_and_connectors</option>
+                            <option>Shelf_holder</option>
+                            <option>Support</option>
+                            <option>Thrust_bearings</option>
+                            <option>Sheds</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchase_price1" class="col-form-label">purchase_price</label>
+                        <input id="purchase_price1" type="text" class="form-control tinput" name="purchase_price">
+                    </div>
+                    <div class="form-group">
+                        <label for="weight1" class="col-form-label">weight</label>
+                        <input id="weight1" type="text" class="form-control tinput" name="weight">
+                    </div>
+                    <div class="form-group">
+                        <label for="photo1" class="col-form-label">photo</label>
+                        <input id="photo1" type="file" class="form-control" name="image_name_">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="modal_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel2">Delete this row?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="placeElem2" th:action="@{/table/furniture/delete}">
+                    <div class="modal-footer" id="placeBefore">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                        <input type="text" name="id" value="" class="hidden-el">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">S
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel3">Add new row</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="placeElem3" enctype="multipart/form-data"  method="post" th:action="@{/table/furniture/add}">
+                    <div class="form-group">
+                        <label for="article3" class="col-form-label">article</label>
+                        <input id="article3" type="text" class="form-control tinput" name="article">
+                    </div>
+                    <div class="form-group">
+                        <select name="furniture_type_enum">
+                            <option>Tapping_screw</option>
+                            <option>Dowel</option>
+                            <option>Evrovint</option>
+                            <option>Screw</option>
+                            <option>Loops</option>
+                            <option>Nut</option>
+                            <option>Washer</option>
+                            <option>StudPlug</option>
+                            <option>Kitchen</option>
+                            <option>corners_of_furniture</option>
+                            <option>dowels</option>
+                            <option>Fasteners_and_connectors</option>
+                            <option>Shelf_holder</option>
+                            <option>Support</option>
+                            <option>Thrust_bearings</option>
+                            <option>Sheds</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount3" class="col-form-label">amount</label>
+                        <input id="amount3" type="text" class="form-control tinput" name="amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit3" class="col-form-label">unit</label>
+                        <input id="unit3" type="text" class="form-control tinput" name="unit">
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier_name3" class="col-form-label">supplier_name</label>
+                        <input id="supplier_name3" type="text" class="form-control tinput" name="supplier_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="purchase_price3" class="col-form-label">purchase_price</label>
+                        <input id="purchase_price3" type="text" class="form-control tinput" name="purchase_price">
+                    </div>
+                    <div class="form-group">
+                        <label for="weight3" class="col-form-label">weight</label>
+                        <input id="weight3" type="text" class="form-control tinput" name="weight">
+                    </div>
+                    <div class="form-group">
+                        <label for="photo3" class="col-form-label">photo</label>
+                        <input id="photo3" type="file" class="form-control" name="image_name_">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<nav th:replace="fragments/main_fragment::navbar"></nav>
+<div class="bg-dark custom-layout mt-2 mx-auto">
+    <div><h2 class="mx-auto custom-font">Furnitures</h2></div>
+    <div>
+        <div class="scroll-table" id="main-table">
+            <table class="table table-dark">
+                <thead class="thead-dark">
+                <tr>
+                    <div><th scope="col" class="tmark">Article</th></div>
+                    <div><th scope="col" class="tmark">furniture_type</th></div>
+                    <div><th scope="col" class="tmark">Unit</th></div>
+                    <div><th scope="col" class="tmark">Amount</th></div>
+                    <div><th scope="col" class="tmark">Supplier</th></div>
+                    <div><th scope="col" class="tmark">Price</th></div>
+                    <div><th scope="col" class="tmark">Weight</th></div>
+                    <div><th scope="col" class="tmark">Image</th></div>
+                    <div><th scope="col">Action</th></div>
+
+                </tr>
+                </thead>
+                <div class="container">
+                    <tbody>
+                    <th:block th:each="furniture:${furnitures}">
+                        <tr>
+                            <td th:text="${furniture.article}"></td>
+                            <td th:text="${furniture.furniture_type}"></td>
+                            <td th:text="${furniture.unit}"></td>
+                            <td th:text="${furniture.amount}"></td>
+                            <td th:text="${furniture.main_supplier.supplier_name}"></td>
+                            <td th:text="${furniture.purchase_price}"></td>
+                            <td th:text="${furniture.weight}"></td>
+                            <td><a target="_blank" th:href="@{|/table/furniture/${furniture.article}/${furniture.image_name}|}" th:if="${furniture.image_name}">Photo</a></td>
+                            <td><div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo">Edit</button>
+                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo">Delete</button>
+                            </div></td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </div>
+            </table>
+        </div>
+        <form action="/add_row" method="post"></form>
+        <button type="button" class="btn btn-secondary btn-add" data-toggle="modal" data-target="#modal_add" data-whatever="@mdo">Add new row</button>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/users_script.js}"></script>
+
+<footer th:replace="fragments/main_fragment::footer">
+</footer>
+</body>
+</html>

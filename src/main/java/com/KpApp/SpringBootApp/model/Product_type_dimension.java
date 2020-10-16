@@ -14,7 +14,7 @@ public class Product_type_dimension {
 
     @Id
     @Enumerated(EnumType.STRING)
-    private Product_type Product_type_name;
+    private Product_type Product_type;
 
     @Column(nullable = false)
     private Integer dimensions;
