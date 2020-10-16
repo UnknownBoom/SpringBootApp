@@ -180,8 +180,8 @@
                             <td th:text="${order.price} ?:''"></td>
                             <td ><a th:if="${order.order_scheme_name}!=null" th:href="@{|/table/order/${order.id}/${order.order_scheme_name}|}" th:text="Schemas"></a></td>
                             <td><div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal1" data-whatever="@mdo">Edit</button>
-                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal2" data-whatever="@mdo">Delete</button>
+                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo">Edit</button>
+                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo">Delete</button>
                             </div></td>
                         </tr>
                     </th:block>
@@ -189,7 +189,7 @@
                 </div>
             </table>
         </div>
-        <button type="button" class="btn btn-secondary btn-add" data-toggle="modal" data-target="#modal3" data-whatever="@mdo">Add new row</button>
+        <button type="button" class="btn btn-secondary btn-add" data-toggle="modal" data-target="#modal_add" data-whatever="@mdo">Add new row</button>
     </div>
 </div>
 

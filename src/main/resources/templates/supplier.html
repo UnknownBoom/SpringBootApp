@@ -131,8 +131,8 @@
                             <td th:text="${supp.address} ?:''"></td>
                             <td th:text="${supp.delivery_period} ?:''"></td>
                             <td ><div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal1" data-whatever="@mdo">Edit</button>
-                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal2" data-whatever="@mdo">Delete</button>
+                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo">Edit</button>
+                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo">Delete</button>
                             </div>
                             </td>
                         </tr>
@@ -141,7 +141,7 @@
                 </div>
             </table>
         </div>
-        <button type="button" class="btn btn-secondary btn-add" data-toggle="modal" data-target="#modal3" data-whatever="@mdo">Add new row</button>
+        <button type="button" class="btn btn-secondary btn-add" data-toggle="modal" data-target="#modal_add" data-whatever="@mdo">Add new row</button>
     </div>
 </div>
 
