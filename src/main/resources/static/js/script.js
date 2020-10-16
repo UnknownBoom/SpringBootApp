@@ -14,7 +14,7 @@ let ed_event_listener = function(e){
     let tds = [];
     let values = [];
     for(let i = 1; i < theads.length; i++){
-        if(theads[i].innerText.toLowerCase() != 'photo' && theads[i].innerText.toLowerCase() != 'roles'){
+        if( theads[i].innerText.toLowerCase() != 'roles'){
             tds[i] = tr.querySelectorAll('td')[i];
             values[i] = tds[i].innerText;
             console.log(values[i]);
