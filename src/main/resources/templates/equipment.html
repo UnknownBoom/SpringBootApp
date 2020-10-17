@@ -128,8 +128,8 @@
                             <td th:text="${equipment.equipment_type}?:''"></td>
                             <td th:text="${equipment.description} ?:''"></td>
                             <td ><div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo" onclick="EditEquipment">Edit</button>
-                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo" onclick="DeleteEquipment">Delete</button>
+                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo" onclick="EditEquipment(this)">Edit</button>
+                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo" onclick="DeleteEquipment(this)">Delete</button>
                             </div>
                             </td>
                         </tr>
