@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("table/product_type_dimension")
-public class product_type_dimensionController {
+public class Product_type_dimensionController {
 
     @Autowired
     private Product_type_dimensionService product_type_dimensionService;

@@ -30,7 +30,7 @@ public class MaterialController {
     }
     @PostMapping("/add")
     public String addMaterial(Material material, @RequestParam(name = "material_type_enum") String Material_type_enum,
-                              @RequestParam(required = false,name="image_name_") MultipartFile file,
+                              @RequestParam(required = false,name="image") MultipartFile file,
                                @RequestParam(required = true,name="supplier_name") String supplier_name,
                                Model model){
         materialService.addMaterial(material,Material_type_enum,supplier_name,file);

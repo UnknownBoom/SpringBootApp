@@ -27,7 +27,7 @@ public class MaterialService {
 
 
     public boolean isExist(Material material){
-        return materialRepo.findMaterialByArticle(material.getImage_name()) != null;
+        return materialRepo.findMaterialByArticle(material.getArticle()) != null;
     }
 
     public Iterable<Material> findMaterial(String id) {
