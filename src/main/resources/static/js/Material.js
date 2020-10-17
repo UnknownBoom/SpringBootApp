@@ -9,8 +9,8 @@ function EditMaterial(e) {
     document.getElementById('edit_unit').value = tr.childNodes[5].textContent;
     document.getElementById('edit_supplier_name').value = tr.childNodes[7].textContent;
     document.getElementById('material_type_enum').value = tr.childNodes[9].textContent;
-        document.getElementById('edit_length').value = tr.childNodes[11].textContent;
-        document.getElementById('edit_description').value = tr.childNodes[13].textContent;
+    document.getElementById('edit_length').value = tr.childNodes[11].textContent;
+    document.getElementById('edit_description').value = tr.childNodes[13].textContent;
     document.getElementById('edit_purchase_price').value = tr.childNodes[15].textContent;
     document.getElementById('edit_gost').value = tr.childNodes[17].textContent;
 }

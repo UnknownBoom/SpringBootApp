@@ -42,7 +42,7 @@ public class Product_type_dimensionController {
     }
 
     @PostMapping("/delete")
-    public String deleteProduct_type_dimension(Product_type_dimension Product_type_dimension,Model model){
+    public String deleteProduct_type_dimension(@RequestParam(name = "product_type_enum") String Product_type_dimension,Model model){
         product_type_dimensionService.deleteProduct_type_dimension(Product_type_dimension);
         return "redirect:/table/product_type_dimension";
     }
