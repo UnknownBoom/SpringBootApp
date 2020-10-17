@@ -227,8 +227,8 @@
                         <td><a target="_blank" th:href ="@{|/table/material/${material.article}/${material.image_name}|}"th:if="${material.image_name}">Image</a></td>
 
                         <td><div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo" onclick="EditMaterial">Edit</button>
-                            <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo" onclick="DeleteMaterial">Delete</button>
+                            <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo" onclick="EditMaterial(this)">Edit</button>
+                            <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo" onclick="DeleteMaterial(this)">Delete</button>
                         </div></td>
                     </tr>
                 </th:block>
@@ -239,7 +239,7 @@
     <button type="button" class="btn btn-secondary btn-add" data-toggle="modal" data-target="#modal_add" data-whatever="@mdo">Add new row</button>
 </div>
 
-<footer th:replace="fragments/main_fragment::footer">
-</footer>
+    <script type="text/javascript" th:src="@{/js/Material.js}"></script>
+
 </body>
 </html>
