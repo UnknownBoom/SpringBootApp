@@ -178,8 +178,8 @@
                             <td th:text="${order.price} ?:''"></td>
                             <td ><a th:if="${order.order_scheme_name}!=null" th:href="@{|/table/order/${order.id}/${order.order_scheme_name}|}" th:text="Schemas"></a></td>
                             <td><div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo" onclick="EditOrder">Edit</button>
-                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo" onclick="DeleteOrder">Delete</button>
+                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo" onclick="EditOrder(this)">Edit</button>
+                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo" onclick="DeleteOrder(this)">Delete</button>
                             </div></td>
                         </tr>
                     </th:block>
@@ -191,7 +191,7 @@
     </div>
 </div>
 
-<footer th:replace="fragments/main_fragment::footer">
-</footer>
+<script type="text/javascript" th:src="@{/js/Order.js}"></script>
+    
 </body>
 </html>
