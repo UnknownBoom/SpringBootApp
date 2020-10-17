@@ -14,31 +14,28 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="placeElem1" th:action="@{/table/material/edit}" method = "post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <span class="tinput"></span>
-                    </div>
+                <form id="Edit_form" th:action="@{/table/material/edit}" method = "post" enctype="multipart/form-data">
 
 
                     <div class="form-group">
-                        <label for="article1" class="col-form-label">article</label>
-                        <input id="article1" type="text" class="form-control tinput" name="article">
+                        <label for="edit_article" class="col-form-label">article</label>
+                        <input id="edit_article" type="text" class="form-control tinput" name="article">
                     </div>
                     <div class="form-group">
-                        <label for="amount1" class="col-form-label">amount</label>
-                        <input id="amount1" type="text" class="form-control tinput" name="amount">
+                        <label for="edit_amount" class="col-form-label">amount</label>
+                        <input id="edit_amount" type="text" class="form-control tinput" name="amount">
                     </div>
                     <div class="form-group">
-                        <label for="unit1" class="col-form-label">unit</label>
-                        <input id="unit1" type="text" class="form-control tinput" name="unit">
+                        <label for="edit_unit" class="col-form-label">unit</label>
+                        <input id="edit_unit1" type="text" class="form-control tinput" name="unit">
                     </div>
                     <div class="form-group">
-                        <label for="supplier_name1" class="col-form-label">supplier_name</label>
-                        <input id="supplier_name1" type="text" class="form-control tinput" name="supplier_name">
+                        <label for="edit_supplier_name" class="col-form-label">supplier_name</label>
+                        <input id="edit_supplier_name" type="text" class="form-control tinput" name="supplier_name">
                     </div>
                     <div class="form-group">
-                        <label for="photo1" class="col-form-label">photo</label>
-                        <input id="photo1" type="file" class="form-control" name="image_name_">
+                        <label for="edit_photo" class="col-form-label">photo</label>
+                        <input id="edit_photo" type="file" class="form-control" name="image_name">
                     </div>
                     <div class="form-group">
                         <select name="material_type_enum">
@@ -59,20 +56,20 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="length2" class="col-form-label">Price</label>
-                        <input id="length2" type="text" class="form-control tinput" name="purchase_price">
+                        <label for="edit_length" class="col-form-label">Price</label>
+                        <input id="edit_length" type="text" class="form-control tinput" name="purchase_price">
                     </div>
                     <div class="form-group">
-                        <label for="length1" class="col-form-label">length</label>
-                        <input id="length1" type="text" class="form-control tinput" name="length">
+                        <label for="edit_length" class="col-form-label">length</label>
+                        <input id="edit_length" type="text" class="form-control tinput" name="length">
                     </div>
                     <div class="form-group">
-                        <label for="description1" class="col-form-label">description</label>
-                        <input id="description1" type="text" class="form-control tinput" name="description">
+                        <label for="edit_description" class="col-form-label">description</label>
+                        <input id="edit_description" type="text" class="form-control tinput" name="description">
                     </div>
                     <div class="form-group">
-                        <label for="gost1" class="col-form-label">gost</label>
-                        <input id="gost1" type="text" class="form-control tinput" name="gost">
+                        <label for="edit_gost" class="col-form-label">gost</label>
+                        <input id="edit_gost" type="text" class="form-control tinput" name="gost">
                     </div>
 
                     <div class="modal-footer">
@@ -97,11 +94,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="placeElem2" th:action="@{/table/material/delete}" method = "post" >
+                <form id="Delete_form" th:action="@{/table/material/delete}" method = "post" >
                     <div class="modal-footer" id="placeBefore">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary">Delete</button>
-                        <input type="text" name="article" value="" class="hidden-el">
+                        <input type="text" name="article" value="" id="delete_id">
                     </div>
                 </form>
             </div>
@@ -119,26 +116,26 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="placeElem3" enctype="multipart/form-data" th:action="@{/table/material/add}" method = "post" >
+                <form id="Add_form" enctype="multipart/form-data" th:action="@{/table/material/add}" method = "post" >
                     <div class="form-group">
-                        <label for="article3" class="col-form-label">article</label>
-                        <input id="article3" type="text" class="form-control tinput" name="article">
+                        <label for="add_article" class="col-form-label">article</label>
+                        <input id="add_article" type="text" class="form-control tinput" name="article">
                     </div>
                     <div class="form-group">
-                        <label for="amount3" class="col-form-label">amount</label>
-                        <input id="amount3" type="text" class="form-control tinput" name="amount">
+                        <label for="add_amount" class="col-form-label">amount</label>
+                        <input id="add_amount" type="text" class="form-control tinput" name="amount">
                     </div>
                     <div class="form-group">
-                        <label for="unit3" class="col-form-label">unit</label>
-                        <input id="unit3" type="text" class="form-control tinput" name="unit">
+                        <label for="add_unit" class="col-form-label">unit</label>
+                        <input id="add_unit" type="text" class="form-control tinput" name="unit">
                     </div>
                     <div class="form-group">
-                        <label for="supplier_name3" class="col-form-label">supplier_name</label>
-                        <input id="supplier_name3" type="text" class="form-control tinput" name="supplier_name">
+                        <label for="_add_supplier_name" class="col-form-label">supplier_name</label>
+                        <input id="add_supplier_name" type="text" class="form-control tinput" name="supplier_name">
                     </div>
                     <div class="form-group">
-                        <label for="photo3" class="col-form-label">photo</label>
-                        <input id="photo3" type="file" class="form-control" name="image_name_">
+                        <label for="add_photo" class="col-form-label">photo</label>
+                        <input id="add_photo" type="file" class="form-control" name="image_name">
                     </div>
                     <div class="form-group">
                         <select name="material_type_enum">
@@ -159,21 +156,21 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="length4" class="col-form-label">Price</label>
-                        <input id="length4" type="text" class="form-control tinput" name="purchase_price">
+                        <label for="add_purchase_price" class="col-form-label">Price</label>
+                        <input id="add_purchase_price" type="text" class="form-control tinput" name="purchase_price">
                     </div>
 
                     <div class="form-group">
-                        <label for="length3" class="col-form-label">length</label>
-                        <input id="length3" type="text" class="form-control tinput" name="length">
+                        <label for="add_length" class="col-form-label">length</label>
+                        <input id="add_length" type="text" class="form-control tinput" name="length">
                     </div>
                     <div class="form-group">
-                        <label for="description3" class="col-form-label">description</label>
-                        <input id="description3" type="text" class="form-control tinput" name="description">
+                        <label for="add_description" class="col-form-label">description</label>
+                        <input id="add_description" type="text" class="form-control tinput" name="description">
                     </div>
                     <div class="form-group">
-                        <label for="gost3" class="col-form-label">gost</label>
-                        <input id="gost3" type="text" class="form-control tinput" name="gost">
+                        <label for="add_gost" class="col-form-label">gost</label>
+                        <input id="add_gost" type="text" class="form-control tinput" name="gost">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -230,8 +227,8 @@
                         <td><a target="_blank" th:href ="@{|/table/material/${material.article}/${material.image_name}|}"th:if="${material.image_name}">Image</a></td>
 
                         <td><div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo">Edit</button>
-                            <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo">Delete</button>
+                            <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo" onclick="EditMaterial">Edit</button>
+                            <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo" onclick="DeleteMaterial">Delete</button>
                         </div></td>
                     </tr>
                 </th:block>
