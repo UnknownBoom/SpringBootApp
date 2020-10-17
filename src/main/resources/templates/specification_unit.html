@@ -14,7 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="Edit_form" method="post" action="@{/table/specification_unit/edit}" enctype="multipart/form-data">
+                <form id="Edit_form" method="post" th:action="@{/table/specification_unit/edit}" enctype="multipart/form-data">
                     <div class="form-group hidden-el">
                         <label for="edit_id" class="col-form-label">id</label>
                         <input id="edit_id" type="text" class="form-control tinput" name="id">
