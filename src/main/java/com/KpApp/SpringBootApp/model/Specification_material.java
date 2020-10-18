@@ -16,14 +16,13 @@ public class Specification_material {
     @SequenceGenerator(name = "specification_material_generator",sequenceName = "specification_materials_sequence" ,allocationSize = 25,initialValue = 25)
     private Long id;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @Enumerated(EnumType.STRING)
     private Product_type product_type;
 
-    @NaturalId
-    @ManyToOne
-    @JoinColumn
-    private Material material;
+    @NaturalId(mutable = true)
+    @Enumerated(EnumType.STRING)
+    private Material_type material;
 
     @Column(nullable = false)
     private Integer amount;

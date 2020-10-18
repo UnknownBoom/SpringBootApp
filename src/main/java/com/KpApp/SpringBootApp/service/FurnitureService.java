@@ -1,6 +1,8 @@
 package com.KpApp.SpringBootApp.service;
 
-import com.KpApp.SpringBootApp.model.*;
+import com.KpApp.SpringBootApp.model.Furniture;
+import com.KpApp.SpringBootApp.model.Furniture_type;
+import com.KpApp.SpringBootApp.model.Supplier;
 import com.KpApp.SpringBootApp.repo.FurnitureRepo;
 import com.KpApp.SpringBootApp.validator.ImageValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
 @Service

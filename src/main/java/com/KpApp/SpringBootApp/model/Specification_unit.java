@@ -15,11 +15,11 @@ public class Specification_unit {
     @SequenceGenerator(name = "specification_unit_generator",sequenceName = "specification_unit_sequence" ,allocationSize = 25,initialValue = 25)
     private Long id;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @Enumerated(EnumType.STRING)
     private Product_type product_type;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     @Enumerated(EnumType.STRING)
     private Product_type product_unit;
 

@@ -2,7 +2,6 @@ package com.KpApp.SpringBootApp.service;
 
 import com.KpApp.SpringBootApp.model.Product_type;
 import com.KpApp.SpringBootApp.model.Product_type_dimension;
-import com.KpApp.SpringBootApp.model.Product_type_dimension;
 import com.KpApp.SpringBootApp.repo.Product_type_dimensionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

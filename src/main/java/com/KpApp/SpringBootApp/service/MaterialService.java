@@ -1,6 +1,8 @@
 package com.KpApp.SpringBootApp.service;
 
-import com.KpApp.SpringBootApp.model.*;
+import com.KpApp.SpringBootApp.model.Material;
+import com.KpApp.SpringBootApp.model.Material_type;
+import com.KpApp.SpringBootApp.model.Supplier;
 import com.KpApp.SpringBootApp.repo.MaterialRepo;
 import com.KpApp.SpringBootApp.validator.ImageValidator;
 import org.springframework.beans.factory.annotation.Autowired;

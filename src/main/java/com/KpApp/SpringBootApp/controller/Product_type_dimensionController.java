@@ -3,6 +3,7 @@ package com.KpApp.SpringBootApp.controller;
 import com.KpApp.SpringBootApp.model.Product_type_dimension;
 import com.KpApp.SpringBootApp.service.Product_type_dimensionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class Product_type_dimensionController {
         return "product_type_dimension";
 
     }
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/add")
     public String addProduct_type_dimension(Product_type_dimension Product_type_dimension,
                               @RequestParam(name = "product_type_enum") String product_type_enum,
@@ -32,7 +34,7 @@ public class Product_type_dimensionController {
         product_type_dimensionService.addProduct_type_dimension(Product_type_dimension,product_type_enum);
         return "redirect:/table/product_type_dimension";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/edit")
     public String editProduct_type_dimension(Product_type_dimension Product_type_dimension,
                                 @RequestParam(name = "product_type_enum") String product_type_enum,
@@ -40,7 +42,7 @@ public class Product_type_dimensionController {
         product_type_dimensionService.editProduct_type_dimension(Product_type_dimension,product_type_enum);
         return "redirect:/table/product_type_dimension";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/delete")
     public String deleteProduct_type_dimension(@RequestParam(name = "product_type_enum") String Product_type_dimension,Model model){
         product_type_dimensionService.deleteProduct_type_dimension(Product_type_dimension);

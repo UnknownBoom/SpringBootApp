@@ -28,18 +28,18 @@
                     Tables
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  th:href="@{/table/user}">Users</a>
-                    <a class="dropdown-item"  th:href="@{/table/order}">Orders</a>
+                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/user}">Users</a>
+                    <a class="dropdown-item"   th:href="@{/table/order}">Orders</a>
                     <a class="dropdown-item"  th:href="@{/table/furniture}">Furniture</a>
                     <a class="dropdown-item" th:href="@{/table/supplier}">Supplier</a>
-                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/operation}">Operations</a>
+                    <a class="dropdown-item" th:href="@{/table/operation}">Operations</a>
                     <a class="dropdown-item" th:href="@{/table/material}">Material</a>
-                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/Specification_furniture}">Specification_furniture</a>
-                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/spec_unit}">spec_unit</a>
-                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/operation_specificatio}">operation_specification</a>
-                    <a class="dropdown-item" th:href="@{/table/equipment}">Equipment</a>
+                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/specification_furniture}">Specification_furniture</a>
+                    <a class="dropdown-item"sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/specification_operation}">specification_operation</a>
+                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/equipment}">Equipment</a>
                     <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/specification_material}">specification_materials</a>
-                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/material}">materials</a>
+                    <a class="dropdown-item" th:href="@{/table/material}">materials</a>
+                    <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/specification_unit}">Specification_unit</a>
                     <a class="dropdown-item" th:href="@{/table/product_type_dimension}">Product_type_dimension</a>
                 </div>
         </ul>

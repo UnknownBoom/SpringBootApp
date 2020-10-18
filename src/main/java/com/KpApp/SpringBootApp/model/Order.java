@@ -46,5 +46,4 @@ public class Order {
     @Column(nullable = true)
     private String order_scheme_name =null;
 
-
 }

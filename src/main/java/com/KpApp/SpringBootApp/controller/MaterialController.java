@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,7 @@ public class MaterialController {
         return "material";
 
     }
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/add")
     public String addMaterial(Material material, @RequestParam(name = "material_type_enum") String Material_type_enum,
                               @RequestParam(required = false,name="image") MultipartFile file,
@@ -36,7 +38,7 @@ public class MaterialController {
         materialService.addMaterial(material,Material_type_enum,supplier_name,file);
         return "redirect:/table/material";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/edit")
     public String editMaterial(Material material,@RequestParam(name = "material_type_enum",required = false) String Material_type_enum,
                                @RequestParam(required = false,name="image_name_") MultipartFile file,
@@ -45,7 +47,7 @@ public class MaterialController {
         materialService.editMaterial(material,Material_type_enum,supplier_name,file);
         return "redirect:/table/material";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/delete")
     public String deleteMaterial(Material material,Model model){
         materialService.deleteMaterial(material);

@@ -1,18 +1,21 @@
 package com.KpApp.SpringBootApp.service;
 
-import com.KpApp.SpringBootApp.model.Equipment;
-import com.KpApp.SpringBootApp.model.Equipment_type;
+import com.KpApp.SpringBootApp.model.Order;
 import com.KpApp.SpringBootApp.model.Role;
 import com.KpApp.SpringBootApp.model.User;
+import com.KpApp.SpringBootApp.repo.OrderRepo;
 import com.KpApp.SpringBootApp.repo.UserRepo;
 import com.KpApp.SpringBootApp.validator.ImageValidator;
+import com.KpApp.SpringBootApp.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -22,17 +25,27 @@ import java.util.Collections;
 import java.util.UUID;
 
 @Service
-public class UserService implements UserDetailsService {
+public class  UserService implements UserDetailsService {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    @Autowired
+    private OrderRepo orderRepo;
 
     @Value("${upload_path}")
     private String upload_path;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
+        User user = userRepo.findByUsername(s);
+        if(user!=null){
+            return user;
+        }else{
+            throw new UsernameNotFoundException("Username not found");
+        }
     }
 
     public boolean isExist(User user){
@@ -45,7 +58,10 @@ public class UserService implements UserDetailsService {
             try {
                 long idL = Long.parseLong(id);
                 ArrayList<User> userList = new ArrayList<>();
-                userList.add(userRepo.findUsersById(idL));
+                User usersById = userRepo.findUsersById(idL);
+                if(usersById!=null){
+                    userList.add(usersById);
+                }
                 users = userList;
             }catch (Exception e){
                 users = new ArrayList<User>();
@@ -82,6 +98,7 @@ public class UserService implements UserDetailsService {
                     return false;
                 }
             }
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepo.save(user);
             return true;
         }catch (Exception e){
@@ -96,6 +113,8 @@ public class UserService implements UserDetailsService {
             System.out.println("User AlREADY EXISTS");
             return false;
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoles(Collections.singleton(Role.Customer));
         userRepo.save(user);
         return true;
     }
@@ -110,6 +129,11 @@ public class UserService implements UserDetailsService {
         try {
             if(user_role_enum!=null){
                 user.setRoles(Collections.singleton(Role.valueOf(user_role_enum)));
+            }
+            if(user_role_enum==null){
+                user.setPassword(userRepo.findUsersById(user.getId()).getPassword());
+            }else{
+                user.setPassword(passwordEncoder.encode(user.getPassword()));
             }
             if(file !=null && !file.isEmpty()){
                 if(ImageValidator.validate(file,null)){
@@ -126,6 +150,34 @@ public class UserService implements UserDetailsService {
             System.out.println("Invalid role");
             return false;
         }
+    }
+    public void editUser( User user_origin,
+                          Long id,
+                          String username,
+                          String password,
+                          String first_name,
+                          String surname,
+                          String patronymic,
+                          Model model){
+
+        if(password!=null && !password.isEmpty()){
+            if(UserValidator.validatePassword(password)){
+                user_origin.setPassword(passwordEncoder.encode(password));
+            }else{
+                model.addAttribute("passwordError","weak password");
+                return ;
+            }
+        }
+        if(UserValidator.validateUsername(username)){
+            user_origin.setUsername(username);
+        }else{
+            model.addAttribute("usernameError","username can not be empty");
+            return ;
+        }
+        user_origin.setFirst_name(first_name);
+        user_origin.setSurname(surname);
+        user_origin.setPatronymic(patronymic);
+        userRepo.save(user_origin);
     }
 
     public boolean editUser(User user){
@@ -163,9 +215,11 @@ public class UserService implements UserDetailsService {
                     throw new IOException("Unable to create directory");
                 }
             }
+            if(!ImageValidator.validate(file,null)) return null;
             String uuid = UUID.randomUUID().toString();
             String result_photo_name = uuid+"."+user.getUsername()+"."+file.getOriginalFilename();
             user.setPhoto_name(result_photo_name);
+            userRepo.save(user);
             file.transferTo(Paths.get(upload_path+result_photo_name));
             return user;
         }
@@ -182,5 +236,10 @@ public class UserService implements UserDetailsService {
         return is;
     }
 
-
+    public User getUserWithOrders(@AuthenticationPrincipal User user){
+        User byId = userRepo.findUsersById(user.getId());
+        Iterable<Order> orders_list = orderRepo.findOrdersByUser_idList(byId.getId());
+        byId.setOrders(orders_list);
+        return byId;
+    }
 }

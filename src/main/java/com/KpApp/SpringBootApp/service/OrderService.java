@@ -1,8 +1,7 @@
 package com.KpApp.SpringBootApp.service;
 
-import com.KpApp.SpringBootApp.model.Product_type;
-import com.KpApp.SpringBootApp.model.Role;
 import com.KpApp.SpringBootApp.model.Order;
+import com.KpApp.SpringBootApp.model.Product_type;
 import com.KpApp.SpringBootApp.model.User;
 import com.KpApp.SpringBootApp.repo.OrderRepo;
 import com.KpApp.SpringBootApp.validator.ImageValidator;
@@ -13,13 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.nio.file.Paths;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.UUID;
 
@@ -36,7 +31,7 @@ public class OrderService {
 
 
     public boolean isExist(Order Order){
-        return orderRepo.findByOrder_name(Order.getOrder_name()) != null;
+        return orderRepo.findById(Order.getId()) != null;
     }
 
     public Iterable<Order> findOrders(String id) {
@@ -44,9 +39,13 @@ public class OrderService {
         if(id!=null && !id.isEmpty()){
             try {
                 long idL = Long.parseLong(id);
-                ArrayList<Order> OrderList = new ArrayList<>();
-                OrderList.add(orderRepo.findById(idL));
-                orders = OrderList;
+                ArrayList list = new ArrayList();
+                Order byId = orderRepo.findById(Long.parseLong(id));
+                if(byId!=null){
+                    list.add(byId);
+                }
+                list.add(orderRepo.findById(idL));
+                orders = list;
             }catch (Exception e){
                 orders = new ArrayList<Order>();
             }
@@ -107,7 +106,8 @@ public class OrderService {
         return true;
     }
 
-    public boolean editOrder(Order order,String product_type_enum,MultipartFile file,String customer_username,String manager_username){
+    public boolean editOrder(Order order,String product_type_enum,MultipartFile file,String customer_username,String manager_username,
+                             String planed_date_end_str){
         if(order==null) return false;
 
         if(!isExist(order)){
@@ -136,6 +136,12 @@ public class OrderService {
                 }
             }else{
                 order.setOrder_scheme_name(orderRepo.findById(order.getId()).get().getOrder_scheme_name());
+            }
+            if(planed_date_end_str==null){
+                order.setPlaned_date_end(orderRepo.findById(order.getId()).get().getPlaned_date_end());
+            }else{
+                Date simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd").parse(planed_date_end_str);
+                order.setPlaned_date_end(simpleDateFormat);
             }
             orderRepo.save(order);
             return true;

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class OrderController {
         return "order";
 
     }
+
     @PostMapping("/add")
     public String addOrder(Order order, @RequestParam(name = "product_type_enum") String product_type_enum,
                           @RequestParam(required = false,name="order_schema_image") MultipartFile file,
@@ -39,17 +41,18 @@ public class OrderController {
         orderService.addOrder(order,product_type_enum,file,customer_username,manager_username,planed_date_end_str);
         return "redirect:/table/order";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/edit")
     public String editOrder(Order order,@RequestParam(name = "product_type_enum",required = false) String Order_role_enum,
                            @RequestParam(name="order_schema_image",required = false) MultipartFile file,
                             @RequestParam(required = true,name="customer_username") String customer_username,
                             @RequestParam(required = false,name="manager_username") String manager_username,
+                            @RequestParam(required = false,name="planed_date_end_str") String planed_date_end,
                            Model model){
-        orderService.editOrder(order,Order_role_enum,file,customer_username,manager_username);
+        orderService.editOrder(order,Order_role_enum,file,customer_username,manager_username,planed_date_end);
         return "redirect:/table/order";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/delete")
     public String deleteOrder(Order order,Model model){
         orderService.deleteOrder(order);

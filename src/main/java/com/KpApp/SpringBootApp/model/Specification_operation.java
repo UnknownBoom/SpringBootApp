@@ -29,6 +29,5 @@ public class Specification_operation {
     private Equipment_type equipment_type;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date operation_time;
+    private Integer operation_time;
 }

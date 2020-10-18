@@ -133,7 +133,7 @@
                                 <button id="edit_button" type="button" class="btn btn-secondary btn-ed"
                                         data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo"
                                         onclick="EditSupplier(this)"> Edit </button>
-                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete"
+                                <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')"  data-toggle="modal" data-target="#modal_delete"
                                         data-whatever="@mdo"
                                         onclick="DellSupplier(this)"
                                 >Delete</button>

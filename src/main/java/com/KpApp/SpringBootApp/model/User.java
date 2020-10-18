@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -42,7 +43,7 @@ public class User implements Serializable, UserDetails {
     @Column(nullable = true)
     private String patronymic = null;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
@@ -50,6 +51,9 @@ public class User implements Serializable, UserDetails {
 
     @Column(nullable = true)
     private String photo_name;
+
+    @Transient
+    private Iterable<Order> orders;
 
 
     @Override

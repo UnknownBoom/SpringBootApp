@@ -1,0 +1,105 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/main_fragment.html::header ('Profile')">
+</head>
+
+<body class="bg-body ">
+<th:block th:replace="fragments/main_fragment::navbar"></th:block>
+<div class="container bootstrap snippet custom-layout bg-dark mt-2">
+    <div class="row mt-3 mb-2">
+        <div class="mx-auto"><h2 class="mx-auto custom-font" th:text="${user.username}?:'Null'">Orders</h2></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"><!--left col-->
+            <div class="">
+                <img th:if="${user.photo_name}" th:src="@{|/img/${user.photo_name}|}" class="avatar img-circle img-thumbnail" alt="avatar" name="Image" >
+                <form  th:action="@{/upload/users/}" method="post" enctype="multipart/form-data" modelAttribute="user_image">
+                <h6 class="custom-font">Upload a different photo...</h6>
+                <input type="file"  name="file" class="custom-down"/>
+                <input type="submit" class="text-center file-upload mt-1"
+                       th:classappend="${imageError!=null?'is-invalid':''}">
+                    <div class="invalid-feedback" th:if="${imageError!=null}">
+                        <div class="alert alert-danger" th:text="${imageError}" ></div>
+                    </div>
+                </form>
+            </div>
+            </hr>
+            <br>
+        </div><!--/col-3-->
+        <div class="col-sm-9">
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <hr>
+
+                    <form class="form" th:action="@{/profile_edit/}" method="post" id="registrationForm" >
+                        <input type="hidden" th:value="${user.id}" class="form-control" name="id">
+                        <input type="hidden" th:value="${user.photo_name}" class="form-control" name="photo_name">
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label ><h4>Username</h4></label>
+                                <input type="text" th:value="${user.username}?:''" class="form-control" name="username" placeholder="first name" title="enter your first name if any."
+                                       th:classappend="${usernameError!=null?'is-invalid':''}">
+                                <div class="invalid-feedback" th:if="${usernameError!=null}">
+                                    <div class="alert alert-danger" th:text="${usernameError}" ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label><h4>Password</h4></label>
+                                <input type="text" class="form-control" name="password" placeholder="password" title="enter your first name if any."
+                                       th:classappend="${passwordError!=null?'is-invalid':''}">
+                                <div class="invalid-feedback" th:if="${passwordError!=null}">
+                                    <div class="alert alert-danger" th:text="${passwordError}" ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label><h4>First name</h4></label>
+                                <input th:value="${user.first_name}" type="text" class="form-control" name="first_name"placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label><h4>Surname</h4></label>
+                                <input th:value="${user.surname}" type="text" class="form-control" name="surname" placeholder="last name" title="enter your last name if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label><h4>Patronymic</h4></label>
+                                <input type="text" th:value="${user.patronymic}" class="form-control" name="patronymic" placeholder="enter phone" title="enter your phone number if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label><h4>Roles</h4></label>
+                                <input type="text" th:value="${user.roles}" class="form-control" name="user_roles" laceholder="enter mobile number" title="enter your mobile number if any." disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <input type="submit">Save</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label><h4>Orders_id</h4></label>
+                                <th:block th:each="order:${user.orders}">
+                                    <div class="col-xs-6">
+                                    <a th:text="${order.order_name}"></a>
+                                    </div>
+                                </th:block>
+                        </div>
+                    </form>
+        </div><!--/tab-content-->
+
+    </div><!--/col-9-->
+</div><!--/row-->
+</div>
+    <footer th:replace="fragments/main_fragment::footer">
+    </footer>
+</body>

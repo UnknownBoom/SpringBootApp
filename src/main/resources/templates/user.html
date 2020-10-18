@@ -178,10 +178,11 @@
                             <td><a target="_blank" th:href ="@{|/table/user/${user.id}/${user.photo_name}|}"th:if="${user.photo_name}" th:text="${user.photo_name}">Photo</a></td>
                             <td></td>
                             <td><div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-ed" data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo"
+                                 <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')"
+ data-target="#modal_edit" data-whatever="@mdo"
                                 onclick="EditUser(this)"
                                 >Edit</button>
-                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo"
+                                <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo"
                                         onclick="DeleteUser(this)"
                                 >Delete</button>
                             </div></td>

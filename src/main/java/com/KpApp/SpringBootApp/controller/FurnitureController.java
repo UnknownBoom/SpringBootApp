@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class FurnitureController {
         furnitureService.addFurniture(furniture,furniture_type_enum,file,supplier_name);
         return "redirect:/table/furniture";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/edit")
     public String editFurniture(Furniture Furniture,@RequestParam(name = "furniture_type_enum",required = false) String furniture_type_enum,
                             @RequestParam(name="Furniture_schema_image",required = false) MultipartFile file,
@@ -47,7 +48,7 @@ public class FurnitureController {
         furnitureService.editFurniture(Furniture,furniture_type_enum,file,supplier_name);
         return "redirect:/table/furniture";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/delete")
     public String deleteFurniture(Furniture furniture,Model model){
         furnitureService.deleteFurniture(furniture);

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,7 @@ public class UserController {
         return "user";
 
     }
+
     @PostMapping("/add")
     public String addUser(User user, @RequestParam(name = "user_role_enum") String user_role_enum,
                                @RequestParam(required = false,name="user_photo") MultipartFile file,
@@ -46,7 +48,7 @@ public class UserController {
         userService.editUser(user,user_role_enum,file);
         return "redirect:/table/user";
     }
-
+    @PreAuthorize("hasAnyAuthority('Manager','Master','Director','Deputy_director')")
     @PostMapping("/delete")
     public String deleteUser(User user,Model model){
         userService.deleteUser(user);
