@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/main_fragment :: header ('Users')")>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="fragments/main_fragment :: header ('Users')">
 </head>
 <body  class="bg-body">
 
@@ -14,7 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="Edit_form" method="post"  th:action="@{/table/user/edit}" enctype="multipart/form-data">
+                <form id="edit_form" method="post"  th:action="@{/table/user/edit}" enctype="multipart/form-data">
 
                         <input id="edit_id" type="hidden" class="form-control tinput" name="id">
 
@@ -61,7 +61,6 @@
         </div>
     </div>
 </div>
-</div>
 
 <div class="modal fade" id="modal_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -86,7 +85,7 @@
     </div>
 </div>
 <div class="modal fade" id="modal_add"   tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">S
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabel3">Add new row</h5>
@@ -178,12 +177,13 @@
                             <td><a target="_blank" th:href ="@{|/table/user/${user.id}/${user.photo_name}|}"th:if="${user.photo_name}" th:text="${user.photo_name}">Photo</a></td>
                             <td></td>
                             <td><div class="btn-group" role="group" aria-label="Basic example">
-                                 <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')"
- data-target="#modal_edit" data-whatever="@mdo"
+                                 <button type="button" class="btn btn-secondary btn-del"  data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo"
                                 onclick="EditUser(this)"
+                                         th:if="${#authorization.expression('hasAnyAuthority(''Manager'',''Master'',''Director'',''Deputy_director'')') or cur_user.id == user.id}"
                                 >Edit</button>
-                                <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo"
+                                <button type="button" class="btn btn-secondary btn-del" data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo"
                                         onclick="DeleteUser(this)"
+                                        th:if="${#authorization.expression('hasAnyAuthority(''Manager'',''Master'',''Director'',''Deputy_director'')') or cur_user.id == user.id}"
                                 >Delete</button>
                             </div></td>
                         </tr>

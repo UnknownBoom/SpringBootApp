@@ -32,7 +32,6 @@
                     <a class="dropdown-item"   th:href="@{/table/order}">Orders</a>
                     <a class="dropdown-item"  th:href="@{/table/furniture}">Furniture</a>
                     <a class="dropdown-item" th:href="@{/table/supplier}">Supplier</a>
-                    <a class="dropdown-item" th:href="@{/table/operation}">Operations</a>
                     <a class="dropdown-item" th:href="@{/table/material}">Material</a>
                     <a class="dropdown-item" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/specification_furniture}">Specification_furniture</a>
                     <a class="dropdown-item"sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" th:href="@{/table/specification_operation}">specification_operation</a>

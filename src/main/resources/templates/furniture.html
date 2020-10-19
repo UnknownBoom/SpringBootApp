@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/main_fragment::header ('Furnitures')">
 </head>
 <body class="bg-body" >
@@ -202,7 +202,7 @@
                             <td th:text="${furniture.weight}"></td>
                             <td><a target="_blank" th:href="@{|/table/furniture/${furniture.article}/${furniture.image_name}|}" th:if="${furniture.image_name}">Photo</a></td>
                             <td><div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')"  sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" data-target="#modal_edit" data-whatever="@mdo"
+                                <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" data-target="#modal_edit" data-whatever="@mdo"
                                         onclick="EditFurniture(this)"
                                 >Edit</button>
                                 <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')"  data-toggle="modal" data-target="#modal_delete" data-whatever="@mdo"

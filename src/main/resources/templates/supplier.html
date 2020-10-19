@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/main_fragment :: header ('Suppliers')")>
-    <title>Основная форма</title>
-
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/main_fragment :: header ('Suppliers')">
 </head>
 <body  class="bg-body">
 
@@ -130,7 +128,7 @@
                             <td id = "address" th:text="${supp.address} ?:''"></td>
                             <td id = "delivery_period" th:text="${supp.delivery_period} ?:''"></td>
                             <td ><div class="btn-group" role="group" aria-label="Basic example">
-                                <button id="edit_button" type="button" class="btn btn-secondary btn-ed"
+                                <button id="edit_button" type="button" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')" class="btn btn-secondary btn-ed"
                                         data-toggle="modal" data-target="#modal_edit" data-whatever="@mdo"
                                         onclick="EditSupplier(this)"> Edit </button>
                                 <button type="button" class="btn btn-secondary btn-del" sec:authorize="hasAnyAuthority('Manager','Master','Director','Deputy_director')"  data-toggle="modal" data-target="#modal_delete"

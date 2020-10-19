@@ -9,6 +9,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +27,10 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public String getUser(String id, Model model){
+    public String getUser(@AuthenticationPrincipal User user, String id, Model model){
         Iterable<User> users = userService.findUsers(id);
         model.addAttribute("users",users);
+        model.addAttribute("cur_user",user);
         return "user";
 
     }
